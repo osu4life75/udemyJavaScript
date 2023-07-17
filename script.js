@@ -1,43 +1,39 @@
-//Loops
+//Function Decleration 
 
-var todos = [
-    "clean room",
-    "brush teeth",
-    "exercise",
-    "study javascript",
-    "eat healthy"
-];
-var todosLength = todos.length;
-//for ( var i=0; i < todosLength; i++ ) {
-//     todos.pop();
+//function sayHello() {
+ // console.log("Hello");
 //}
 
-//var counterOne = 10;
-//while (counterOne > 0) {
- //   console.log(counterOne);
-  //  counterOne--
-//}
-//var counterTwo = 10;
-//do {
-   // console.log(counterTwo)
-   // counterTwo++
-//}while (counterTwo > 0);
+//sayHello();
 
+//Function Expression: Anonymous Function
 
-//if (name === "Billy" || name === "Ann"){
-  //alert("Hi BIlly or Ann!");
+//var sayBye = function() {
+//  console.log("Bye");
 //}
 
-// Get the button element
-const button = document.getElementById('myButton');
+//sayBye();
 
-// Add a click event listener to the button
-button.addEventListener('click', () => {
-  // Perform your desired action when the button is clicked
-  console.log('Button clicked!');
-});
-
-function multiply(a, b) {
- return a * b
+/*function multiply(a,b) {
+    return a * b;
+  
 }
-multiply(5, 10);
+
+
+var total = multiply(4,5);
+alert(total);*/
+
+// Data Structure
+
+/* var list = ["tiger", "cat","bear", "bird"];
+console.log(list[1]);*/
+
+var list = ["tiger", "cat","bear", "bird"];
+
+
+
+
+
+
+
+
