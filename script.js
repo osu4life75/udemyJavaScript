@@ -30,6 +30,32 @@ console.log(list[1]);*/
 
 var list = ["tiger", "cat","bear", "bird"];
 
+var button = document.getElementById("clickME");
+
+button.addEventListener("click", function() {
+  console.log("CLICK!!!");
+})
+
+var button2 = document.getElementById("button2");
+
+button2.addEventListener("click", function(){
+  console.log("I work!!!")
+})
+
+var button3 = document.getElementById("button3");
+
+button3.addEventListener("click", handClick);
+
+function handClick() {
+  var myArray = ['apple', 'banana', 'orange', 'grape'];
+  
+  for (var i = 0; i < myArray.length; i++) {
+    console.log(myArray[i]);
+  }
+}
+ 
+
+
 
 
 
