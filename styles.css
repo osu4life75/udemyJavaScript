@@ -10,9 +10,10 @@
     padding: 10px;
   }
 
-  body{
-    background-color: red;
+  body {
+    background-image: linear-gradient(red, yellow);
   }
+  
 
   h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

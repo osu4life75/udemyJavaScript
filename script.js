@@ -53,7 +53,36 @@ function handClick() {
     console.log(myArray[i]);
   }
 }
- 
+
+function greet() {
+  console.log("Hello, I'm " + this.firstName + " " + this.lastName + ".");
+}
+
+var myArray2 = {
+  firstName: "George",
+  lastName: "Lynch",
+  age: 45,
+  occupation: "Developer",
+  greet: greet
+};
+
+console.log(myArray2);
+myArray2.greet();
+
+var button4 = document.getElementById("button4");
+
+button4.addEventListener('click',function(){
+  console.log("Hello World!")
+})
+
+var button = document.getElementById("enter");
+
+button.addEventListener("click", function(){
+  console.log('clicks')
+})
+
+
+
 
 
 
