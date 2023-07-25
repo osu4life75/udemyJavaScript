@@ -81,6 +81,20 @@ button.addEventListener("click", function(){
   console.log('clicks')
 })
 
+function make500buttons() {
+  const parentElement = document.getElementById("one")
+  for (let index = 1; index <= 500; index++) {
+    const newButton = document.createElement("button")
+    newButton.innerText = `button ${index}`;
+     newButton.addEventListener('click', () => addMeToButton(index))
+     parentElement.appendChild(newButton);
+    
+  }
+}
+function addMeToButton(i){
+  console.log(`Bryan Made Me Do IT ${i}`)
+}
+
 
 
 
