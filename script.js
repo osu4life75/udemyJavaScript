@@ -95,6 +95,9 @@ function addMeToButton(i){
   console.log(`Bryan Made Me Do IT ${i}`)
 }
 
+function getElementByIdExample() {
+  // Get the element by its ID
+  var element = document.
 
 
 
