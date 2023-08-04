@@ -30,11 +30,11 @@ console.log(list[1]);*/
 
 var list = ["tiger", "cat","bear", "bird"];
 
-var button = document.getElementById("clickME");
+//var button = document.getElementById("clickME");
 
-button.addEventListener("click", function() {
-  console.log("CLICK!!!");
-})
+//button.addEventListener("click", function() {
+  //console.log("CLICK!!!");
+//})
 
 var button2 = document.getElementById("button2");
 
@@ -95,7 +95,20 @@ function addMeToButton(i){
   console.log(`Bryan Made Me Do IT ${i}`)
 }
 
-alert("hello world");
+var image = document.getElementById('image');
+var rotateButton = document.getElementById('rotateButton');
+
+var currentRotation = 0;
+
+rotateButton.addEventListener('click', function() {
+    currentRotation += 45; // Rotate by 45 degrees
+
+    // Apply the rotation using the transform property
+    image.style.transform = 'rotate(' + currentRotation + 'deg)';
+});
+
+
+
 
 
 
