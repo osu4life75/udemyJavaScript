@@ -107,10 +107,25 @@ rotateButton.addEventListener('click', function() {
     image.style.transform = 'rotate(' + currentRotation + 'deg)';
 });
 
+let myForm = document.getElementById("myForm");
 
+function checkForm() {
+    let firstName = 'George';
+    let lastName = 'Lynch';
 
+    if (firstName + ' ' + lastName === 'George Lynch') {
+        console.log('You are learning!');
+    } else {
+        console.log('Error');
+    }
+}
 
+myForm.addEventListener("click", function() {
+  event.preventDefault(); // Prevent the default form submission behavior
+  console.log('Form submitted');
+});
 
+console.log(myForm);
 
 
 
