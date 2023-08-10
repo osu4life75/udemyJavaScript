@@ -1,32 +1,4 @@
-//Function Decleration 
 
-//function sayHello() {
- // console.log("Hello");
-//}
-
-//sayHello();
-
-//Function Expression: Anonymous Function
-
-//var sayBye = function() {
-//  console.log("Bye");
-//}
-
-//sayBye();
-
-/*function multiply(a,b) {
-    return a * b;
-  
-}
-
-
-var total = multiply(4,5);
-alert(total);*/
-
-// Data Structure
-
-/* var list = ["tiger", "cat","bear", "bird"];
-console.log(list[1]);*/
 
 var list = ["tiger", "cat","bear", "bird"];
 
@@ -120,14 +92,29 @@ function checkForm() {
     }
 }
 
-myForm.addEventListener("click", function() {
-  event.preventDefault(); // Prevent the default form submission behavior
-  console.log('Form submitted');
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('myForm');
+  const messageContainer = document.getElementById('message');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(form);
+
+    // You can perform validation here if needed
+    // For example:
+    const name = formData.get('name');
+    const email = formData.get('email');
+    if (!name || !email) {
+      messageContainer.textContent = 'Please fill in all fields.';
+      return;
+    }
+
+    // Simulate form submission success
+    messageContainer.textContent = 'Form submitted successfully!';
+    form.reset();
+  });
 });
-
-console.log(myForm);
-
-
 
 
 
