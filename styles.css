@@ -5,9 +5,9 @@
     font-variant-ligatures: historical-ligatures;
   }
 
-  .item {
-    text-align: center;
-  }
+ .format {
+    display: inline-block;
+ }
 
   body {
     width: 100px;

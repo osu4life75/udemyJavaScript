@@ -47,11 +47,7 @@ button4.addEventListener('click',function(){
   console.log("Hello World!")
 })
 
-var button = document.getElementById("enter");
 
-button.addEventListener("click", function(){
-  console.log('clicks')
-})
 
 function make500buttons() {
   const parentElement = document.getElementById("one")
@@ -64,7 +60,7 @@ function make500buttons() {
   }
 }
 function addMeToButton(i){
-  console.log(`Bryan Made Me Do IT ${i}`)
+  console.log(`Bryan Made Me Do IT ${i}`);
 }
 
 var image = document.getElementById('image');
@@ -73,7 +69,7 @@ var rotateButton = document.getElementById('rotateButton');
 var currentRotation = 0;
 
 rotateButton.addEventListener('click', function() {
-    currentRotation += 45; // Rotate by 45 degrees
+    currentRotation += 90; // Rotate by 45 degrees
 
     // Apply the rotation using the transform property
     image.style.transform = 'rotate(' + currentRotation + 'deg)';
