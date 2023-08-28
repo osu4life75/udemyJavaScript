@@ -1,77 +1,26 @@
-
-
-var list = ["tiger", "cat","bear", "bird"];
-
-//var button = document.getElementById("clickME");
-
-//button.addEventListener("click", function() {
-  //console.log("CLICK!!!");
-//})
-
-var button2 = document.getElementById("button2");
-
-button2.addEventListener("click", function(){
-  console.log("I work!!!")
-})
-
-var button3 = document.getElementById("button3");
-
-button3.addEventListener("click", handClick);
-
-function handClick() {
-  var myArray = ['apple', 'banana', 'orange', 'grape'];
-  
-  for (var i = 0; i < myArray.length; i++) {
-    console.log(myArray[i]);
-  }
-}
-
-function greet() {
-  console.log("Hello, I'm " + this.firstName + " " + this.lastName + ".");
-}
-
-var myArray2 = {
-  firstName: "George",
-  lastName: "Lynch",
-  age: 45,
-  occupation: "Developer",
-  greet: greet
-};
-
-console.log(myArray2);
-myArray2.greet();
-
-var button4 = document.getElementById("button4");
-
-button4.addEventListener('click',function(){
-  console.log("Hello World!")
-})
-
-
-
-function make500buttons() {
-  const parentElement = document.getElementById("one")
-  for (let index = 1; index <= 500; index++) {
-    const newButton = document.createElement("button")
-    newButton.innerText = `button ${index}`;
-     newButton.addEventListener('click', () => addMeToButton(index))
-     parentElement.appendChild(newButton);
-    
-  }
-}
-function addMeToButton(i){
-  console.log(`Bryan Made Me Do IT ${i}`);
-}
-
-var image = document.getElementById('image');
-var rotateButton = document.getElementById('rotateButton');
-
-var currentRotation = 0;
-
-rotateButton.addEventListener('click', function() {
-    currentRotation += 90; // Rotate by 45 degrees
-
-    // Apply the rotation using the transform property
-    image.style.transform = 'rotate(' + currentRotation + 'deg)';
+const submit = document.getElementById('submit');
+submit.addEventListener('click' ,()=>{
+    alert('Form Submited');
 });
 
+// script.js (inside the 'public' directory)
+
+// Function to create a dynamic button
+function createDynamicButton() {
+    // Create a button element
+    const button = document.createElement('button');
+    button.textContent = 'Dynamic Button';
+    
+    // Add a click event listener to the button
+    button.addEventListener('click', () => {
+      alert('Dynamic button clicked!');
+    });
+    
+    // Append the button to the buttonContainer div
+    const buttonContainer = document.getElementById('buttonContainer');
+    buttonContainer.appendChild(button);
+  }
+  
+  // Call the createDynamicButton function to create the button when the page loads
+  document.addEventListener('DOMContentLoaded', createDynamicButton);
+  
