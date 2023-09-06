@@ -1,26 +1,33 @@
 const submit = document.getElementById('submit');
-submit.addEventListener('click' ,()=>{
-    alert('Form Submited');
-});
+submit.addEventListener('click', () => {
+  const formData = {
+    firstName: document.querySelector('[aria-label="First name"]').value,
+    lastName: document.querySelector('[aria-label="Last name"]').value,
+    height: document.querySelector('[aria-label="Height"]').value,
+    weight: document.querySelector('[aria-label="Weight"]').value,
+    highSchool: document.querySelector('[aria-label="High School"]').value,
+    gpa: document.querySelector('[aria-label="GPA"]').value,
+    position: document.querySelector('[aria-label="Position"]').value,
+    otherPositions: document.querySelector('[aria-label="Other Postions Played"]').value,
+  };
 
-// script.js (inside the 'public' directory)
-
-// Function to create a dynamic button
-function createDynamicButton() {
-    // Create a button element
-    const button = document.createElement('button');
-    button.textContent = 'Dynamic Button';
-    
-    // Add a click event listener to the button
-    button.addEventListener('click', () => {
-      alert('Dynamic button clicked!');
+  // Send a POST request to the server
+  fetch('/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert('Form Submitted Successfully');
+      } else {
+        alert('Error Submitting Form');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Error Submitting Form');
     });
-    
-    // Append the button to the buttonContainer div
-    const buttonContainer = document.getElementById('buttonContainer');
-    buttonContainer.appendChild(button);
-  }
-  
-  // Call the createDynamicButton function to create the button when the page loads
-  document.addEventListener('DOMContentLoaded', createDynamicButton);
-  
+});
