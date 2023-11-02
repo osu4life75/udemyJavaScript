@@ -1,0 +1,32 @@
+/* Style the form container */
+.recruitInfo {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+  }
+  
+  /* Style form fields */
+  .form-group {
+    margin: 10px 0;
+  }
+  
+  /* Style the submit button */
+  #submit {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #submit:hover {
+    background-color: #0056b3;
+  }
+  
+  
