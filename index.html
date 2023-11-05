@@ -4,21 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Document</title>
+  <title>Talent Turf Central</title>
 </head>
 <body>
   <div class="recruitInfo">
     <form class="recruitForm" id="myForm">
-        First Name: <input class="form-group"  type="text" id="firstName"><br>
-        Last Name:  <input class="form-group" type="text" id="lastName"><br>
-        Height: <input class="form-group" type="text" id="height"><br>
-        Weight: <input class="form-group" type="number" id="weight"><br>
-        GPA: <input class="form-group" type="number" id="gpa"><br>
-        High School: <input class="form-group" type="text" id="highSchool"><br>
-        Position: <input class="form-group" type="text" id="position"><br>
-        Other Positions Played: <input class="form-group" type="text" id="otherPositionsPlayed">
-        <br>
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName">
+      </div>
+      <div class="form-group">
+        <label for="height">Height:</label>
+        <input type="text" id="height">
+      </div>
+      <div class="form-group">
+        <label for="weight">Weight:</label>
+        <input type="number" id="weight">
+      </div>
+      <div class="form-group">
+        <label for="gpa">GPA:</label>
+        <input type="number" id="gpa">
+      </div>
+      <div class="form-group">
+        <label for="highSchool">High School:</label>
+        <input type="text" id="highSchool">
+      </div>
+      <div class="form-group">
+        <label for="position">Position:</label>
+        <input type="text" id="position">
+      </div>
+      <div class="form-group">
+        <label for="otherPositionsPlayed">Other Positions Played:</label>
+        <input type="text" id="otherPositionsPlayed">
+      </div>
+      <div class="form-group">
         <button type="button" id="submit">Submit</button>
+      </div>
     </form>
   </div>
   <script src="formDataStorage.js"></script>

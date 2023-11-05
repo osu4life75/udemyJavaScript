@@ -1,54 +1,53 @@
+window.onload = function () {
+    console.log('Window has finished loading.');
+}
 document.addEventListener('DOMContentLoaded', function() {
-   const submitButton = document.getElementById('submit');
-   const form = document.getElementById('myForm');
+    const submitButton = document.getElementById('submit');
+    const form = document.getElementById('myForm');
 
-   submitButton.addEventListener('click', handleSubmit);
+    submitButton.addEventListener('click', handleSubmit);
+     console.log('click');
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
 
-   function handleSubmit(event) {
-       event.preventDefault();
+        const formData = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            height: document.getElementById('height').value,
+            weight: document.getElementById('weight').value,
+            gpa: document.getElementById('gpa').value,
+            highSchool: document.getElementById('highSchool').value,
+            position: document.getElementById('position').value,
+            otherPositionsPlayed: document.getElementById('otherPositionsPlayed').value
+        };
 
-       const firstName = document.getElementById('firstName').value;
-       const lastName = document.getElementById('lastName').value;
-       const height = document.getElementById('height').value;
-       const weight = document.getElementById('weight').value;
-       const gpa = document.getElementById('gpa').value;
-       const highSchool = document.getElementById('highSchool').value;
-       const position = document.getElementById('position').value;
-       const otherPositionsPlayed = document.getElementById('otherPositionsPlayed').value;
+        sendDataToServer(formData);
+        console.log('Form data:', formData); // Log the form data to console
+        clearForm(form);
+    }
 
-       const formData = {
-           firstName,
-           lastName,
-           height,
-           weight,
-           gpa,
-           highSchool,
-           position,
-           otherPositionsPlayed
-       };
+    function sendDataToServer(formData) {
+        // Replace the URL with your server endpoint
+    fetch('http://localhost:3000/submitFormData', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Form data sent:', data);
+            addFormData(formData); // Add the form data to the array
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
-       sendDataToServer(formData);
-   }
+    function clearForm(form) {
+        form.reset(); // Reset the form fields
+    }
 
-   function sendDataToServer(formData) {
-       fetch('http://localhost:3000/submitFormData', {
-           method: 'POST',
-           headers: {
-               'Content-Type': 'application/json',
-           },
-           body: JSON.stringify(formData),
-       })
-       .then(response => response.json())
-       .then(data => {
-           console.log('Form data sent:', data);
-           clearForm(form); // Clear the form after successful submission
-       })
-       .catch(error => {
-           console.error('Error:', error);
-       });
-   }
-
-   function clearForm(form) {
-       form.reset(); // Reset the form fields
-   }
+   
 });
