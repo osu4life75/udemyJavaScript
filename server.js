@@ -1,3 +1,15 @@
+import express from 'express';
+//import multer from 'multer';
+import cors from 'cors';
+
+//Middleware 
+const app = express(); 
+// Enable CORS
+app.use(cors());
+
+
+
+
 const http = require('http');
 const fs = require('fs');
 const { parse } = require('querystring');
@@ -24,9 +36,10 @@ const server = http.createServer((req, res) => {
                 body += chunk.toString();
             });
             req.on('end', () => {
-                const formData = parse(body);
+                const formData = JSON.parse(body);
                 addFormData(formData);
                 console.log('Form data received:', formData);
+                // Here you can write the data to formDataStorage.js
                 fs.appendFile('formDataStorage.js', `formDataArray.push(${JSON.stringify(formData)});\n`, (err) => {
                     if (err) throw err;
                     console.log('Form data appended to formDataStorage.js');

@@ -1,12 +1,13 @@
 window.onload = function () {
     console.log('Window has finished loading.');
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     const submitButton = document.getElementById('submit');
     const form = document.getElementById('myForm');
 
     submitButton.addEventListener('click', handleSubmit);
-     console.log('click');
+
     function handleSubmit(event) {
         event.preventDefault(); // Prevent default form submission
 
@@ -28,17 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function sendDataToServer(formData) {
         // Replace the URL with your server endpoint
-    fetch('http://localhost:3000/submitFormData', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    })
+        fetch('http://localhost:3000/submitFormData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
         .then(response => response.json())
         .then(data => {
             console.log('Form data sent:', data);
-            addFormData(formData); // Add the form data to the array
         })
         .catch(error => {
             console.error('Error:', error);
@@ -48,6 +48,4 @@ document.addEventListener('DOMContentLoaded', function() {
     function clearForm(form) {
         form.reset(); // Reset the form fields
     }
-
-   
 });
