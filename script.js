@@ -1,8 +1,4 @@
-window.onload = function () {
-    console.log('Window has finished loading.');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const submitButton = document.getElementById('submit');
     const form = document.getElementById('myForm');
 
@@ -14,21 +10,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = {
             firstName: document.getElementById('firstName').value,
             lastName: document.getElementById('lastName').value,
-            height: document.getElementById('height').value,
-            weight: document.getElementById('weight').value,
-            gpa: document.getElementById('gpa').value,
-            highSchool: document.getElementById('highSchool').value,
-            position: document.getElementById('position').value,
-            otherPositionsPlayed: document.getElementById('otherPositionsPlayed').value
+            // ... (other form fields)
         };
 
         sendDataToServer(formData);
         console.log('Form data:', formData); // Log the form data to console
-        clearForm(form);
+        form.reset();
     }
 
     function sendDataToServer(formData) {
-        // Replace the URL with your server endpoint
         fetch('http://localhost:3000/submitFormData', {
             method: 'POST',
             headers: {
@@ -36,16 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(formData),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Form data sent:', data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
-
-    function clearForm(form) {
-        form.reset(); // Reset the form fields
+            .then(response => response.json())
+            .then(data => {
+                console.log('Form data sent:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 });

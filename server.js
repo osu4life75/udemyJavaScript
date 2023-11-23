@@ -1,60 +1,52 @@
 import express from 'express';
-//import multer from 'multer';
 import cors from 'cors';
+import sql from 'mssql';
 
-//Middleware 
-const app = express(); 
-// Enable CORS
+const app = express();
 app.use(cors());
 
+// Middleware to parse JSON in the request body
+app.use(express.json());
 
-
-
-const http = require('http');
-const fs = require('fs');
-const { parse } = require('querystring');
-const cors = require('cors'); // Import the cors package
-
-let formDataArray = []; // Define an array to store form data
-
-function addFormData(formData) {
-    formDataArray.push(formData);
-}
-
-const corsOptions = {
-    origin: '*', // Allow requests from any origin; can be restricted to specific origins in a production environment
-    methods: 'GET, POST',
-    allowedHeaders: 'Content-Type, Authorization',
+const config = {
+    user: 'your_username',
+    password: 'your_password',
+    server: 'localhost',
+    database: 'your_database',
+    options: {
+        encrypt: true,
+        trustServerCertificate: true,
+    },
 };
 
-const server = http.createServer((req, res) => {
-    if (req.method === 'POST' && req.url === '/submitFormData') {
-        // Use cors middleware before processing POST requests
-        cors(corsOptions)(req, res, () => {
-            let body = '';
-            req.on('data', chunk => {
-                body += chunk.toString();
-            });
-            req.on('end', () => {
-                const formData = JSON.parse(body);
-                addFormData(formData);
-                console.log('Form data received:', formData);
-                // Here you can write the data to formDataStorage.js
-                fs.appendFile('formDataStorage.js', `formDataArray.push(${JSON.stringify(formData)});\n`, (err) => {
-                    if (err) throw err;
-                    console.log('Form data appended to formDataStorage.js');
-                });
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ message: 'Data received' }));
-            });
-        });
-    } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Not Found');
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
+
+app.post('/submitFormData', async (req, res) => {
+    try {
+        await poolConnect;
+        const request = pool.request();
+
+        const formData = req.body;
+
+        // Assuming your table columns match the form data properties
+        const query = `
+            INSERT INTO recruitInfo (Column1Name, Column2Name, ...) 
+            VALUES ('${formData.firstName}', '${formData.lastName}', ...);
+        `;
+
+        const result = await request.query(query);
+
+        console.log('Form data received and saved to the database:', formData);
+
+        res.status(200).json({ message: 'Data received and saved to the database' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
 const PORT = 3000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
