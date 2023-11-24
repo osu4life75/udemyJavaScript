@@ -1,14 +1,17 @@
-import express from 'express';
 import cors from 'cors';
 import sql from 'mssql';
+import express from 'express';
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig();
 
 const app = express();
 app.use(cors());
 
 // Middleware to parse JSON in the request body
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const config = {
+const sqlConfig = {
     user: 'your_username',
     password: 'your_password',
     server: 'localhost',
@@ -19,7 +22,7 @@ const config = {
     },
 };
 
-const pool = new sql.ConnectionPool(config);
+const pool = new sql.ConnectionPool(sqlConfig);
 const poolConnect = pool.connect();
 
 app.post('/submitFormData', async (req, res) => {
@@ -42,6 +45,7 @@ app.post('/submitFormData', async (req, res) => {
         res.status(200).json({ message: 'Data received and saved to the database' });
     } catch (error) {
         console.error('Error:', error);
+        console.error('Error details:', error.originalError); // Log the originalError
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

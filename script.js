@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = {
             firstName: document.getElementById('firstName').value,
             lastName: document.getElementById('lastName').value,
+            height: document.getElementById('height').value,
+            weight: document.getElementById('weight').value,
+            gpa: document.getElementById('gpa').value,
+            highSchool: document.getElementById('highSchool').value,
+            position: document.getElementById('position').value,
+            otherPositionsPlayed: document.getElementById('otherPositionsPlayed').value,
             // ... (other form fields)
         };
 
