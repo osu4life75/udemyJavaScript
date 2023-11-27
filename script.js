@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
             otherPositionsPlayed: document.getElementById('otherPositionsPlayed').value,
             // ... (other form fields)
         };
+        console.log('formData',formData);
 
         sendDataToServer(formData);
-        console.log('Form data:', formData); // Log the form data to console
-        form.reset();
+       form.reset();
     }
 
     function sendDataToServer(formData) {
