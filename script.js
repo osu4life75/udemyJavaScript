@@ -24,20 +24,4 @@ document.addEventListener('DOMContentLoaded', function () {
        form.reset();
     }
 
-    function sendDataToServer(formData) {
-        fetch('http://localhost:3000/submitFormData', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Form data sent:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
 });

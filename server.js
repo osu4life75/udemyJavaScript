@@ -56,7 +56,36 @@ app.post('/submitFormData', async (req, res) => {
   }
 });
 
+// sign up form
+
+// ... (your existing server code)
+
+app.post('/signup', async (req, res) => {
+  try {
+    let userData = {
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+    };
+
+    let databaseTableName = 'user_info';  // Create a new table for user information
+
+    try {
+      const result = await pool.query(`INSERT INTO ${databaseTableName} SET ?`, userData);
+      res.json({ success: true, message: 'Account created successfully' });
+    } catch (err) {
+      console.error('Error creating account: ', err);
+      res.status(500).json({ success: false, message: 'Error creating account' });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    console.error('Error details:', error.originalError);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
