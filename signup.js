@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const signupData = {
         username: document.getElementById('username').value,
         password: document.getElementById('password').value,
+        email: document.getElementById('email').value,
       };
       console.log('signupData', signupData);
   
@@ -35,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
           console.log('Account created:', data);
   
-          // Imagine the game sending you back to the main page after creating an account
-          window.location.href = 'index.html';
+         
+          // window.location.href = 'index.html'; reactivate once done debugging
         })
         .catch(error => {
           console.error('Error:', error);
@@ -48,32 +49,39 @@ document.addEventListener('DOMContentLoaded', function () {
 //   sending data to server for signup
 // signup.js
 
-document.getElementById('signup').addEventListener('click', function() {
-    // Gather information from the form
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    var email = document.getElementById('email').value;
+// document.getElementById('signup').addEventListener('click', function() {
+//     // Gather information from the form
+//     var username = document.getElementById('username').value;
+//     var password = document.getElementById('password').value;
+//     var email = document.getElementById('email').value;
 
-    // Create an object to send to the server
-    var userInfo = {
-        username: username,
-        password: password,
-        email: email,
-    };
+//     // Create an object to send to the server
+//     var userInfo = {
+//         username: username,
+//         password: password,
+//         email: email,
+//     };
 
-    // Send the data to the server using AJAX or Fetch API
-    fetch('http://localhost:3000/userInfo', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userInfo)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
+//     console.log(userInfo);
+
+//     // Send the data to the server using AJAX or Fetch API
+//     fetch('http://localhost:3000/userInfo', {
+//       method: 'POST',
+//       headers: {
+//           'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(userInfo)
+//   })
+//       .then(response => {
+//           if (!response.ok) {
+//               throw new Error(`Network response was not ok. Status: ${response.status}`);
+//           }
+//           return response.json();
+//       })
+//       .then(data => {
+//           console.log('Success:', data);
+//       })
+//       .catch((error) => {
+//           console.error('Error:', error);
+//       });
+//     });  

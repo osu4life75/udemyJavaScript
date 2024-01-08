@@ -61,7 +61,7 @@ app.post('/submitFormData', async (req, res) => {
 // ... (your existing server code)
 
 app.post('/signup', async (req, res) => {
-  try {
+  try { console.log('Request Body:', req.body);
     let userData = {
       username: req.body.username,
       password: req.body.password,
@@ -83,6 +83,18 @@ app.post('/signup', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+// app.post('/userInfo', (req, res) => {
+//   // Handle the incoming JSON data from the client (req.body)
+//   // Perform any necessary server-side logic
+//   // Send back a response, possibly in JSON format
+  
+//   res.json({ message: 'Received the data on the server!' });
+// });
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on http://localhost:${PORT}`);
+// });
 
 const PORT = 3000;
 app.listen(PORT, () => {

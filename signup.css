@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    background-color: blue;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@ body {
   .signupInfo {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box shadow here */
     padding: 20px;
     width: 300px;
   }
@@ -40,7 +40,7 @@ body {
   }
   
   button {
-    background-color: #4caf50;
+    background-color: blue;
     color: #fff;
     padding: 10px;
     border: none;
@@ -52,4 +52,5 @@ body {
   button:hover {
     background-color: #45a049;
   }
-  
+
+ 
